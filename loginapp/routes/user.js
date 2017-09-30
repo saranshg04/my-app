@@ -6,6 +6,18 @@ router.get('/about',function(request,response){
       content(response);
 //    // response.send(data);
  });
+ router.get('/balance',function(req,res){
+      if(req.session.myid){
+            res.send('Balance is 10000');
+      }
+      else{
+            const path = require("path");
+            var newpath = path.normalize(__dirname+"/../..");
+            newpath = path.join(newpath,'loginapp/public/userlogin.html');
+            res.sendFile(newpath);
+      }
+}) ;
+
 
  var counter = 0;
 router.get('/welcome',function(request,response){

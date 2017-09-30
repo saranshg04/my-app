@@ -13,7 +13,7 @@ const userOperations={
         }
         });
     },
-    search(userObject,response){
+    search(userObject,response,request){
         //var userid = userObject.userid;
         //var password = userObject.password;
        // console.log("UserObject is ",userObject);
@@ -26,8 +26,11 @@ const userOperations={
                     response.send('Invalid Userid or Password');
                 }
                 else{
-                    console.log("docs is",docs[0])
-                    response.send('Welcome '+docs[0].userid);
+                    //console.log("docs is",docs[0])
+                    request.session.myid=docs[0].userid;  
+                    console.log("session is",request.session.myid)  
+                    response.render('welcomeuser.ejs',{myid:request.session.myid});
+                   // response.send('Welcome '+docs[0].userid);
                 }
             }
         })

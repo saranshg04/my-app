@@ -8,7 +8,7 @@ router.post('/dologin',function(req,res){
        const userOperations =  require("../db/usercrud.js");
       const User = require("../helpers/User.js");
       const userObject = new User(userid,password);
-      userOperations.search(userObject,res);
+      userOperations.search(userObject,res,req);
      // userOperations.update();
     });
 
